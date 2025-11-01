@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Meeting Assistant - Chrome Extension</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="nav-logo">🎯 Meeting Assistant</div>
+            <div class="nav-menu">
+                <button class="nav-item active" data-view="overview">Overview</button>
+                <button class="nav-item" data-view="architecture">Architecture</button>
+                <button class="nav-item" data-view="technologies">Technologies</button>
+                <button class="nav-item" data-view="privacy">Privacy</button>
+                <button class="nav-item" data-view="generator">Code Generator</button>
+                <button class="nav-item" data-view="setup">Setup</button>
+                <button class="nav-item" data-view="usage">Usage</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="content-wrapper">
+        <!-- Overview Section -->
+        <section id="overview" class="view-section active">
+            <div class="hero-section">
+                <h1 class="hero-title">Real-Time Meeting Assistant</h1>
+                <p class="hero-subtitle">Chrome Extension for Intelligent Meeting Support</p>
+                <p class="hero-description">
+                    A powerful Chrome extension that listens to live meetings and provides real-time AI-powered answers,
+                    helping you stay informed and prepared during conversations.
+                </p>
+            </div>
+
+            <div class="warning-banner">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <h3>Important Limitation</h3>
+                    <p>Chrome extensions <strong>cannot automatically detect</strong> when you're sharing your screen due to browser security restrictions. Manual controls are required. See Privacy section for workarounds.</p>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Real-Time Transcription</h3>
+                    <p>Captures and transcribes meeting audio using advanced speech recognition APIs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Answers</h3>
+                    <p>Generates intelligent responses using GPT-4, GPT-5, or Claude</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Low Latency</h3>
+                    <p>Sub-second response times with optimized API integrations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Controls</h3>
+                    <p>Keyboard shortcuts and manual toggles to hide answers instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Flexible Display</h3>
+                    <p>Overlay, popup, or notification modes for different use cases</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Customizable</h3>
+                    <p>Configure shortcuts, API providers, and display preferences</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <button class="btn btn--primary btn--lg" onclick="navigateToView('architecture')">Get Started</button>
+                <button class="btn btn--outline btn--lg" onclick="navigateToView('generator')">Generate Code</button>
+            </div>
+
+            <div class="disclaimer-box">
+                <h4>⚖️ Ethical Use &amp; Legal Disclaimer</h4>
+                <p>This tool is for <strong>educational purposes</strong>. Users are responsible for:</p>
+                <ul>
+                    <li>Obtaining consent before recording or processing meeting audio</li>
+                    <li>Complying with local laws regarding recording and privacy</li>
+                    <li>Using the extension ethically and transparently</li>
+                    <li>Respecting confidentiality and data protection regulations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="view-section">
+            <div class="section-header">
+                <h1>Extension Architecture</h1>
+                <p>Understand how the components work together to deliver real-time assistance</p>
+            </div>
+
+            <div class="architecture-diagram">
+                <div class="arch-flow">
+                    <div class="arch-arrow">User Interaction</div>
+                    <div class="arch-arrow">Audio Capture</div>
+                    <div class="arch-arrow">Transcription</div>
+                    <div class="arch-arrow">AI Processing</div>
+                    <div class="arch-arrow">Display</div>
+                </div>
+            </div>
+
+            <div class="components-grid">
+                <div class="component-card" data-component="manifest" style="border-color: #6366f1;">
+                    <div class="component-header" style="background-color: #6366f1;">
+                        <h3>manifest.json</h3>
+                        <span class="component-type">Configuration</span>
+                    </div>
+                    <div class="component-body">
+                        <p class="component-purpose">Defines extension structure, permissions, and components</p>
+                        <div class="component-details">
+                            <strong>Key Elements:</strong>
+                            <ul>
+                                <li>Permissions: tabs, audio, storage</li>
+                                <li>Background service worker</li>
+                                <li>Content scripts</li>
+                                <li>Popup UI configuration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-card" data-component="popup" style="border-color: #8b5cf6;">
+                    <div class="component-header" style="background-color: #8b5cf6;">
+                        <h3>popup.html/js</h3>
+                        <span class="component-type">UI</span>
+                    </div>
+                    <div class="component-body">
+                        <p class="component-purpose">User interface for starting/stopping and showing transcriptions</p>
+                        <div class="component-details">
+                            <strong>Features:</strong>
+                            <ul>
+                                <li>Start/Stop controls</li>
+                                <li>Live transcription display</li>
+                                <li>Status indicators</li>
+                                <li>Settings configuration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-card" data-component="background" style="border-color: #ec4899;">
+                    <div class="component-header" style="background-color: #ec4899;">
+                        <h3>background.js</h3>
+                        <span class="component-type">Service Worker</span>
+                    </div>
+                    <div class="component-body">
+                        <p class="component-purpose">Handles audio capture and API orchestration</p>
+                        <div class="component-details">
+                            <strong>Responsibilities:</strong>
+                            <ul>
+                                <li>Tab audio capture</li>
+                                <li>Message routing</li>
+                                <li>State management</li>
+                                <li>Permission handling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-card" data-component="offscreen" style="border-color: #f43f5e;">
+                    <div class="component-header" style="background-color: #f43f5e;">
+                        <h3>offscreen.html/js</h3>
+                        <span class="component-type">Processing</span>
+                    </div>
+                    <div class="component-body">
+                        <p class="component-purpose">Manages audio processing and API connections</p>
+                        <div class="component-details">
+                            <strong>Functions:</strong>
+                            <ul>
+                                <li>Audio stream processing</li>
+                                <li>Speech-to-text API calls</li>
+                                <li>AI API integration</li>
+                                <li>Real-time data streaming</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-card" data-component="content" style="border-color: #a855f7;">
+                    <div class="component-header" style="background-color: #a855f7;">
+                        <h3>content_script.js</h3>
+                        <span class="component-type">Display</span>
+                    </div>
+                    <div class="component-body">
+                        <p class="component-purpose">Displays real-time answers on the meeting page</p>
+                        <div class="component-details">
+                            <strong>Capabilities:</strong>
+                            <ul>
+                                <li>Overlay rendering</li>
+                                <li>Keyboard shortcuts (Ctrl+Shift+H)</li>
+                                <li>Show/hide animations</li>
+                                <li>Position management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section id="technologies" class="view-section">
+            <div class="section-header">
+                <h1>Technology Options</h1>
+                <p>Compare different API providers for speech recognition and AI processing</p>
+            </div>
+
+            <div class="tech-section">
+                <h2>Speech Recognition APIs</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>API</th>
+                                <th>Latency</th>
+                                <th>Accuracy</th>
+                                <th>Cost</th>
+                                <th>Pros</th>
+                                <th>Cons</th>
+                            </tr>
+                        </thead>
+                        <tbody id="speech-api-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tech-section">
+                <h2>AI Answer Generation APIs</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>API</th>
+                                <th>Speed</th>
+                                <th>Quality</th>
+                                <th>Cost</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ai-api-table"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Cost Estimation</h4>
+                <p>For a typical 1-hour meeting:</p>
+                <ul>
+                    <li><strong>Speech Recognition:</strong> $0.12 - $0.15 (AssemblyAI/Deepgram)</li>
+                    <li><strong>AI Processing:</strong> $0.50 - $2.00 (depends on response frequency)</li>
+                    <li><strong>Total:</strong> ~$0.60 - $2.15 per hour</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Privacy Section -->
+        <section id="privacy" class="view-section">
+            <div class="section-header">
+                <h1>Privacy &amp; Limitations</h1>
+                <p>Important considerations and workarounds for screen sharing</p>
+            </div>
+
+            <div class="warning-banner large">
+                <div class="warning-icon">🚫</div>
+                <div class="warning-content">
+                    <h3>Screen Share Detection is IMPOSSIBLE</h3>
+                    <p>Chrome extensions <strong>cannot automatically detect</strong> when you're sharing your screen. This is a fundamental browser security restriction that cannot be bypassed.</p>
+                    <p>You must use <strong>manual controls</strong> to hide the assistant when screen sharing.</p>
+                </div>
+            </div>
+
+            <div class="workarounds-section">
+                <h2>Available Workarounds</h2>
+                <div class="workarounds-grid" id="workarounds-grid"></div>
+            </div>
+
+            <div class="recommended-box">
+                <h3>✅ Recommended Approach</h3>
+                <p><strong>Keyboard Shortcut + Second Monitor</strong></p>
+                <ol>
+                    <li>Set up a second monitor (or use a laptop screen + external monitor)</li>
+                    <li>Display the meeting on your main monitor (the one you share)</li>
+                    <li>Show the assistant answers on your second monitor</li>
+                    <li>Use <kbd>Ctrl+Shift+H</kbd> as a backup to quickly hide if needed</li>
+                </ol>
+                <p class="recommended-note">This provides the safest and most convenient setup for using the assistant during meetings.</p>
+            </div>
+        </section>
+
+        <!-- Code Generator Section -->
+        <section id="generator" class="view-section">
+            <div class="section-header">
+                <h1>Code Generator</h1>
+                <p>Configure and generate your custom Chrome extension</p>
+            </div>
+
+            <div class="generator-container">
+                <div class="generator-form">
+                    <h2>Configuration</h2>
+                    <form id="config-form">
+                        <div class="form-group">
+                            <label class="form-label" for="ext-name">Extension Name</label>
+                            <input type="text" id="ext-name" class="form-control" value="Meeting Assistant" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="speech-api">Speech Recognition API</label>
+                            <select id="speech-api" class="form-control">
+                                <option value="webspeech">Web Speech API (Free)</option>
+                                <option value="assemblyai" selected>AssemblyAI (Best accuracy)</option>
+                                <option value="deepgram">Deepgram (Good balance)</option>
+                                <option value="whisper">OpenAI Whisper</option>
+                                <option value="realtime">OpenAI Realtime API</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="ai-api">AI Answer API</label>
+                            <select id="ai-api" class="form-control">
+                                <option value="gpt4" selected>OpenAI GPT-4</option>
+                                <option value="gpt5">OpenAI GPT-5</option>
+                                <option value="claude">Anthropic Claude</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="display-mode">Display Mode</label>
+                            <select id="display-mode" class="form-control">
+                                <option value="overlay" selected>Overlay (on page)</option>
+                                <option value="popup">Separate Popup</option>
+                                <option value="notification">Browser Notifications</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="shortcut">Hide/Show Keyboard Shortcut</label>
+                            <input type="text" id="shortcut" class="form-control" value="Ctrl+Shift+H" readonly>
+                            <small>Default: Ctrl+Shift+H (customizable after installation)</small>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full-width btn--lg">Generate Extension Code</button>
+                    </form>
+                </div>
+
+                <div class="code-output" id="code-output" style="display: none;">
+                    <div class="code-output-header">
+                        <h2>Generated Code</h2>
+                        <button class="btn btn--outline" onclick="downloadAllCode()">📥 Download All Files</button>
+                    </div>
+
+                    <div class="code-tabs">
+                        <button class="code-tab active" data-file="manifest">manifest.json</button>
+                        <button class="code-tab" data-file="popup-html">popup.html</button>
+                        <button class="code-tab" data-file="popup-js">popup.js</button>
+                        <button class="code-tab" data-file="background">background.js</button>
+                        <button class="code-tab" data-file="content">content_script.js</button>
+                        <button class="code-tab" data-file="offscreen-html">offscreen.html</button>
+                        <button class="code-tab" data-file="offscreen-js">offscreen.js</button>
+                    </div>
+
+                    <div id="code-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Guide Section -->
+        <section id="setup" class="view-section">
+            <div class="section-header">
+                <h1>Setup Guide</h1>
+                <p>Step-by-step instructions to install and configure your extension</p>
+            </div>
+
+            <div class="steps-container" id="setup-steps"></div>
+        </section>
+
+        <!-- Usage Guide Section -->
+        <section id="usage" class="view-section">
+            <div class="section-header">
+                <h1>Usage Guide</h1>
+                <p>How to use the extension effectively during meetings</p>
+            </div>
+
+            <div class="usage-section">
+                <h2>Getting Started</h2>
+                <div class="usage-steps">
+                    <div class="usage-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Start the Assistant</h3>
+                            <p>Click the extension icon and press "Start Assistant" <strong>before</strong> joining the meeting for best results.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Join Your Meeting</h3>
+                            <p>Join your video conference as normal. The extension will automatically start transcribing audio.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>View AI Answers</h3>
+                            <p>Answers will appear in your chosen display mode (overlay, popup, or notifications).</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Hide When Screen Sharing</h3>
+                            <p>Press <kbd>Ctrl+Shift+H</kbd> to instantly hide the overlay before you start screen sharing.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Stop the Assistant</h3>
+                            <p>When the meeting ends, click "Stop Assistant" to end transcription and API calls.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-section">
+                <h2>Tips &amp; Best Practices</h2>
+                <div class="tips-grid" id="tips-grid"></div>
+            </div>
+
+            <div class="troubleshooting-section">
+                <h2>Troubleshooting</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">No audio is being captured</button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Check that you've granted microphone/tab audio permissions</li>
+                                <li>Ensure the correct tab is selected for audio capture</li>
+                                <li>Verify your meeting platform is producing audio</li>
+                                <li>Try refreshing the page and restarting the extension</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Transcription is inaccurate</button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Switch to a higher-quality API (AssemblyAI recommended)</li>
+                                <li>Ensure good audio quality in your meeting</li>
+                                <li>Check your internet connection speed</li>
+                                <li>Consider using a different microphone/audio source</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Answers are slow or delayed</button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Check your internet connection latency</li>
+                                <li>Switch to faster APIs (Deepgram for speech, GPT-4 for AI)</li>
+                                <li>Reduce the frequency of AI query triggers</li>
+                                <li>Use "be concise" in your AI prompts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Extension not showing in Chrome</button>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Ensure Developer Mode is enabled in chrome://extensions</li>
+                                <li>Check that all files are in the correct folder structure</li>
+                                <li>Look for errors in the extension details page</li>
+                                <li>Verify manifest.json is valid JSON</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
